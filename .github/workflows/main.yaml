@@ -1,0 +1,7 @@
+name: main workflow
+on: push
+runner: ubuntulatest
+job:
+  unittest:
+    name: unit test
+    run: echo "unit test cases"
