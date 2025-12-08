@@ -1,7 +1,7 @@
 name: main workflow
 on: [push, workflow_dispatch]
 jobs:
-  unittest:
+  jobcodesetup:
     runs-on: ubuntu-latest
     steps:
     - name: get code
@@ -11,10 +11,21 @@ jobs:
     - name: install dependencies
       run: npm ci
     - name: Lint
-      run: npm run lint
+  joblint:
+    needs: jobcodesetup
+    runs-on: ubuntu-latest
+    steps:
     - name: unit test
       run: npm test
+  jobunittest:
+    needs: jobcodesetup
+    runs-on: ubuntu-latest
+    steps:
     - name: build project
       run: npm run build
+  jobdeployment:
+    needs: [jobcodesetup, jobunittest]
+    runs-on: ubuntu-latest
+    steps:
     - name: deployment
       run: echo "deploying"
