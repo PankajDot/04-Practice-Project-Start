@@ -2,7 +2,7 @@ name: main workflow
 on: [push, workflow_dispatch]
 jobs:
   unittest:
-    runs-on: ubuntulatest
+    runs-on: ubuntu-latest
     steps:
     - name: unit test
       run: echo "unit test cases"
