@@ -1,7 +1,7 @@
 name: main workflow
 on: [push, workflow_dispatch]
 jobs:
-  jobcodesetup:
+  codesetup:
     runs-on: ubuntu-latest
     steps:
     - name: get code
@@ -10,20 +10,20 @@ jobs:
       uses: actions/setup-node@v3
     - name: install dependencies
       run: npm ci
-  jobbuildprj:
-    needs: jobcodesetup
+  buildprj:
+    needs: codesetup
     runs-on: ubuntu-latest
     steps:
     - name: build project
       run: npm run build
-  jobunittest:
-    needs: jobbuildprj
+  unittest:
+    needs: buildprj
     runs-on: ubuntu-latest
     steps:
     - name: unit test
       run: npm test  
-  jobdeployment:
-    needs: jobunittest
+  deployment:
+    needs: unittest
     runs-on: ubuntu-latest
     steps:
     - name: deployment
