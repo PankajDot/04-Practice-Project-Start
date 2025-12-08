@@ -1,7 +1,8 @@
 name: main workflow
-on: push
-runner: ubuntulatest
+on: [push, workflow_dispatch]
 job:
   unittest:
-    name: unit test
-    run: echo "unit test cases"
+    runs-on: ubuntulatest
+    steps:
+    - name: unit test
+    - run: echo "unit test cases"
