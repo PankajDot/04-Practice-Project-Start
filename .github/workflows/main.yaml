@@ -4,5 +4,17 @@ jobs:
   unittest:
     runs-on: ubuntu-latest
     steps:
+    - name: get code
+      uses: actions/checkout@v3
+    - name: install NodeJs
+      uses: actions/setup-node@v3
+    - name: install dependencies
+      run: npm ci
+    - name: Lint
+      run: npm lint
     - name: unit test
-      run: echo "unit test cases"
+      run: npm test
+    - name: build project
+      run: npm run build
+    - name: deployment
+      run: echo "deploying"
