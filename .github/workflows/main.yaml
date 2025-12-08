@@ -1,6 +1,6 @@
 name: main workflow
 on: [push, workflow_dispatch]
-job:
+jobs:
   unittest:
     runs-on: ubuntulatest
     steps:
