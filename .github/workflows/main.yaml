@@ -17,7 +17,7 @@ jobs:
     - name: Lint
       run: npm run lint
   unittest:
-    needs: buildprj
+    needs: lintprj
     runs-on: ubuntu-latest
     steps:
     - name: unit test
