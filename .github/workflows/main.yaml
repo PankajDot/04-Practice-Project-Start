@@ -10,12 +10,12 @@ jobs:
       uses: actions/setup-node@v3
     - name: install dependencies
       run: npm ci
-  buildprj:
+  lintprj:
     needs: codesetup
     runs-on: ubuntu-latest
     steps:
-    - name: build project
-      run: npm run build
+    - name: Lint
+      run: npm run lint
   unittest:
     needs: buildprj
     runs-on: ubuntu-latest
